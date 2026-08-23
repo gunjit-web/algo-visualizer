@@ -7,14 +7,24 @@ import { createRng, randInt } from './random.js';
  * Start/end cells are never walled.
  */
 
-function protectedSet(start, end) {
-  return new Set([key(start.r, start.c), key(end.r, end.c)]);
+function protectedSet(grid, start, end) {
+  // Protect the endpoints and their in-bounds neighbours so that they can never be sealed in.
+  const set = new Set();
+  for (const p of [start, end]) {
+    set.add(key(p.r, p.c));
+    for (const [dr, dc] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+      const r = p.r + dr;
+      const c = p.c + dc;
+      if (r >= 0 && c >= 0 && r < grid.rows && c < grid.cols) set.add(key(r, c));
+    }
+  }
+  return set;
 }
 
 /** Random scatter: each cell becomes a wall with probability `density`. */
 export function randomMaze(grid, start, end, { density = 0.28, seed } = {}) {
   const rng = createRng(seed);
-  const keep = protectedSet(start, end);
+  const keep = protectedSet(grid, start, end);
   const walls = [];
   grid.walls.clear();
   grid.weights.clear();
@@ -38,7 +48,7 @@ export function randomMaze(grid, start, end, { density = 0.28, seed } = {}) {
  */
 export function recursiveDivision(grid, start, end, { seed } = {}) {
   const rng = createRng(seed);
-  const keep = protectedSet(start, end);
+  const keep = protectedSet(grid, start, end);
   const walls = [];
   grid.walls.clear();
   grid.weights.clear();
