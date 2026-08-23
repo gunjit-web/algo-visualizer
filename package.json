@@ -1,0 +1,39 @@
+{
+  "name": "algo-visualizer",
+  "version": "1.0.0",
+  "description": "Interactive pathfinding and sorting algorithm visualizer built with vanilla JavaScript ES modules",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "algorithms",
+    "visualization",
+    "pathfinding",
+    "sorting",
+    "dijkstra",
+    "astar",
+    "bfs",
+    "dfs",
+    "maze",
+    "canvas",
+    "vanilla-js",
+    "es-modules"
+  ],
+  "author": "Gunjit",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gunjit-web/algo-visualizer.git"
+  },
+  "homepage": "https://gunjit-web.github.io/algo-visualizer/",
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}
