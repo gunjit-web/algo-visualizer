@@ -10,6 +10,8 @@ An interactive **pathfinding and sorting algorithm visualizer** written in vanil
 
 **Live demo:** https://gunjit-web.github.io/algo-visualizer/
 
+📄 See [PROJECT.md](PROJECT.md) for the problem statement, design and implementation walkthrough.
+
 ## Features
 
 ### Pathfinding
